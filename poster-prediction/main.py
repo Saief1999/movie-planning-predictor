@@ -20,6 +20,6 @@ if __name__ == "__main__":
 
     cleaned_data_path=f"{os.path.dirname(__file__)}/data/2023-02-05.csv"
 
-    data_retriever.retrieve(cleaned_data_path)
+    data_retriever.retrieve(cleaned_data_path, 10)
     
     # planning_prediction = PlanningPrediction()

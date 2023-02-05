@@ -50,7 +50,7 @@ class TmdbBulkCleaner:
 
         print("Cleaning Bulk Data...")
 
-        for line in progress.bar(lines, every=500, hide=False):
+        for line in progress.bar(lines, every=500, hide=not self.show_progress):
             data = json.loads(line)
 
             # Make sure it's not a video/ adult movi

@@ -2,3 +2,4 @@ requests
 clint
 textui
 pandas
+numpy
