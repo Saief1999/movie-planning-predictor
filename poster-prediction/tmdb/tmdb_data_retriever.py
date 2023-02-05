@@ -23,10 +23,33 @@ class TmdbDataRetriever:
         self.api_key = SecretsManager.retrieve_api_key()
         self.show_progress = show_progress
 
-    def get_images_url(self, movie_id):
+    def get_images_url(self, movie_id: str) -> str:
+        """Gets the TMDB url to hit in order to get image metadata
+
+        Args:
+            movie_id (str): TMDB id
+
+        Returns:
+            str: url
+        """
         return f"{TMDB_API_URL}/movie/{movie_id}/images"
 
-    def retrieve(self, bulk_data_path: str, chunk=None, out_path: str = None):
+    def retrieve(self, bulk_data_path: str, chunk: int = None, out_path: str = None) -> str:
+        """retrieves extra data on the different movies
+
+        Args:
+            bulk_data_path (str): CSV Data (using the bulk cleaner).
+            chunk (int, optional): chunk size. Defaults to None.
+            out_path (str, optional): output path. Defaults to None.
+
+        If no chunk size is provided. All items of bulk data will be looped through.
+        in no out_path is provided. The new output path will be the same (with a "data" suffix).
+        Raises:
+            Exception: 
+
+        Returns:
+            str: output path
+        """
         if not os.path.isfile(bulk_data_path):
             raise Exception("Bulk data file does not exist.")
 
