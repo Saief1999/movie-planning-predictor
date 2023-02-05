@@ -1,0 +1,2 @@
+class TmdbImageRetriever:
+    pass
